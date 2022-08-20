@@ -23,7 +23,6 @@ export default class CreateUserService {
     const password_ENC = await bcrypt.hash(password_N, 10);
 
     const tempRole = null;
-    const tempToken = null;
 
     const newUser = await models.User.create({
       name,
@@ -32,8 +31,7 @@ export default class CreateUserService {
       area,
       email: email.toLowerCase(),
       password: password_ENC,
-      role: tempRole,
-      token: tempToken
+      role: tempRole
     });
 
     const token = jwt.sign(

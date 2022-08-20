@@ -1,6 +1,7 @@
 import express, { Express } from "express";
 import * as bodyParser from "body-parser";
 import { API_PORT } from "./config/main";
+import authenticator from "./middleware/authenticator";
 
 import homeRouter from "./routers/home";
 import playerRouter from "./routers/players";
@@ -20,6 +21,15 @@ app.use("/", homeRouter);
 app.use("/players", playerRouter);
 app.use("/matches", matchRouter);
 app.use("/users", userRouter);
+
+// FIXME: Something activates ServerError.error() with a wrong input when no token exists on body.
+/*
+* Register, Log in then POST to /token with the token value taken from 
+* the login return to test authentication. (Has Bugs)
+*/
+app.post("/token", authenticator, (req, res) => { 
+  res.send("Token Verified!");
+});
 
 /*
   Error Handler

@@ -68,6 +68,37 @@ export default class ServerError extends Error {
         break;
       }
 
+      case ErrorCodes.EMPTY_INPUT: {
+        errorMessage = "One or more required input field(s) is left empty";
+        code = 400;
+
+        break;
+      }
+
+      case ErrorCodes.NO_EMAIL_MATCH: {
+        errorMessage =
+          "Couldn't find the user with te specified email adress";
+        code = 404;
+      }
+
+      case ErrorCodes.INVALID_FIELDS: {
+        errorMessage =
+          "Incorrect password";
+        code = 400;
+      }
+
+      case ErrorCodes.NO_TOKEN: {
+        errorMessage =
+          "Missing token for vaildation";
+        code = 400;
+      }
+
+      case ErrorCodes.BAD_TOKEN: {
+        errorMessage =
+          "Token does not match what is expected";
+        code = 400;
+      }
+
       default: {
         errorMessage = "Something went wrong";
         code = 500;

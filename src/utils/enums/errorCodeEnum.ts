@@ -7,4 +7,9 @@ export const enum ErrorCodes {
     SAME_SEED,
     NO_DATA,
     DUPLICATE_EMAIL,
+    EMPTY_INPUT,
+    NO_EMAIL_MATCH,
+    INVALID_FIELDS,
+    NO_TOKEN,
+    BAD_TOKEN,
 }
